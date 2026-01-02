@@ -1,0 +1,112 @@
+{
+    "manifest_version": 3,
+    "name": "ORKG Annotator",
+    "version": "2.0.0",
+    "description": "A modern Chrome extension for annotating research papers with AI-powered property suggestions and seamless ORKG integration.",
+    
+    "permissions": [
+        "activeTab",
+        "storage",
+        "unlimitedStorage",
+        "scripting",
+        "tabs",
+        "contextMenus",
+        "windows",
+        "system.display",
+        "idle"
+    ],
+    
+    "host_permissions": [
+        "https://orkg.org/*",
+        "https://api.openai.com/*",
+        "https://api.crossref.org/*",
+        "https://api.semanticscholar.org/*",
+        "https://arxiv.org/*",
+        "https://biomedcentral.com/*",
+        "https://nature.com/*",
+        "https://springer.com/*",
+        "https://ieee.org/*",
+        "https://acm.org/*",
+        "https://pubmed.ncbi.nlm.nih.gov/*",
+        "https://doi.org/*",
+        "http://localhost:8000/*",
+        "https://cdn.jsdelivr.net/*",
+        "https://cdnjs.cloudflare.com/*",
+        "https://*/*",
+        "http://*/*"
+    ],
+    
+    "background": {
+        "service_worker": "src/background/background-bundle.js"
+    },
+    
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/content/content-script.js"],
+            "css": ["src/styles/content/bundle.css"],
+            "run_at": "document_end"
+        }
+    ],
+    
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_title": "ORKG Annotator v2.0",
+        "default_icon": {
+            "16": "assets/icons/icon16.png",
+            "32": "assets/icons/icon32.png",
+            "48": "assets/icons/icon48.png",
+            "128": "assets/icons/icon128.png"
+        }
+    },
+    
+    "icons": {
+        "16": "assets/icons/icon16.png",
+        "32": "assets/icons/icon32.png",
+        "48": "assets/icons/icon48.png",
+        "128": "assets/icons/icon128.png"
+    },
+    
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/content/content-script-main.js",
+                "src/styles/*",
+                "src/core/**/*.js",
+                "src/utils/**/*.js",
+                "src/config/**/*.js",
+                "src/services/**/*.js",
+                "assets/icons/*",
+                "src/popup/imageAnnotation.html"
+            ],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self'"
+    },
+    
+    "externally_connectable": {
+        "matches": [
+            "https://orkg.org/*"
+        ]
+    },
+    
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+O",
+                "mac": "Command+Shift+O"
+            },
+            "description": "Open ORKG Annotator"
+        },
+        "toggle_annotator": {
+            "suggested_key": {
+                "default": "Alt+Shift+O",
+                "mac": "Alt+Shift+O"
+            },
+            "description": "Toggle ORKG Annotator visibility"
+        }
+    }
+}

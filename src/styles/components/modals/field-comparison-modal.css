@@ -1,0 +1,614 @@
+/* ================================
+   Field Comparison Modal Styles
+   src/styles/components/field-comparison-modal.css
+   ================================ */
+
+/* Modal Overlay and Container */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+}
+
+.modal-container {
+    width: 100%;
+    max-width: 1400px;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.field-comparison-modal {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 90vh;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .field-comparison-modal {
+    transform: scale(1);
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 18px;
+}
+
+.modal-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* Modal Content */
+.modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+/* Comparison Controls */
+.comparison-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.control-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.field-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.field-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.field-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.field-toggle-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.field-toggle:hover .field-toggle-label {
+    color: var(--text-primary);
+}
+
+/* Comparison Table */
+.comparison-table-container {
+    overflow-x: auto;
+    margin-bottom: 24px;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.comparison-table thead {
+    background: var(--bg-secondary);
+}
+
+.comparison-table th {
+    padding: 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.comparison-table td {
+    padding: 16px;
+    vertical-align: top;
+}
+
+/* Field Row Styles */
+.field-row {
+    transition: all 0.2s ease;
+}
+
+.field-row:hover {
+    background: var(--bg-hover);
+}
+
+.field-row.field-hidden {
+    background: var(--bg-secondary);
+    opacity: 0.6;
+}
+
+.hidden-field-notice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    color: var(--text-tertiary);
+    font-size: 14px;
+}
+
+.show-field-btn {
+    padding: 6px 12px;
+    background: var(--primary-bg-light);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.show-field-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Field Info Column */
+.field-info {
+    min-width: 200px;
+}
+
+.field-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.field-meta {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+.field-id {
+    padding: 2px 6px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Statistics Column */
+.field-stats {
+    min-width: 180px;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Threshold Control Column */
+.threshold-control {
+    min-width: 300px;
+}
+
+/* Problems Section Column */
+.problems-section {
+    min-width: 400px;
+}
+
+.problem-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.problems-scroll {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.problem-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.problem-item:hover {
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.problem-item.selected {
+    background: var(--primary-bg-light);
+    border-color: var(--primary-color);
+}
+
+.problem-rank {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.problem-content {
+    flex: 1;
+}
+
+.problem-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.problem-similarity {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+}
+
+.problem-info-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.problem-info-btn:hover {
+    background: var(--bg-hover);
+    color: var(--primary-color);
+}
+
+.selected-indicator {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--success-color);
+    font-size: 14px;
+}
+
+.no-problems {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-tertiary);
+    font-size: 13px;
+}
+
+.no-problems i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.more-problems {
+    text-align: center;
+    padding: 8px;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* Comparison Summary */
+.comparison-summary {
+    margin-top: 24px;
+}
+
+.summary-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.summary-header {
+    margin-bottom: 20px;
+}
+
+.summary-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 20px;
+}
+
+.summary-stat {
+    text-align: center;
+}
+
+.summary-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.summary-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.selected-problems-summary {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.selected-problems-summary h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.selected-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.selected-list li {
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.selected-list strong {
+    color: var(--text-primary);
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-primary-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-notice {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: var(--warning-bg-light);
+    border: 1px solid var(--warning-border);
+    border-radius: 6px;
+    color: var(--warning-color);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Problem Tooltip */
+.problem-tooltip {
+    position: fixed;
+    padding: 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 300px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    z-index: 10000;
+    pointer-events: none;
+    animation: tooltipFadeIn 0.2s ease;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .comparison-table {
+        font-size: 13px;
+    }
+    
+    .stat-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .field-info {
+        min-width: 150px;
+    }
+    
+    .threshold-control {
+        min-width: 250px;
+    }
+    
+    .problems-section {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-container {
+        padding: 10px;
+    }
+    
+    .field-comparison-modal {
+        max-height: 100vh;
+        border-radius: 8px;
+    }
+    
+    .comparison-controls {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .comparison-table {
+        font-size: 12px;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 8px;
+    }
+    
+    .footer-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .footer-primary-actions {
+        width: 100%;
+    }
+    
+    .footer-primary-actions button {
+        flex: 1;
+    }
+}

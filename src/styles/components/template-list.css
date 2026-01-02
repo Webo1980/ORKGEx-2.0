@@ -1,0 +1,214 @@
+/* Template List Styles */
+.template-list {
+    margin-bottom: 2rem;
+}
+
+.template-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.template-list-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.template-count {
+    background: var(--bg-tertiary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Template Cards */
+.template-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.template-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.template-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.template-card.selected {
+    border-color: var(--success-color);
+    background: var(--bg-primary);
+}
+
+.template-card.expanded {
+    max-height: none;
+}
+
+.template-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.template-rank {
+    background: var(--bg-tertiary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.template-usage {
+    text-align: center;
+}
+
+.usage-count {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.usage-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+/* Template Card Body */
+.template-card-body {
+    margin-bottom: 1rem;
+}
+
+.template-name {
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.125rem;
+}
+
+.template-description {
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
+    line-height: 1.5;
+}
+
+/* Properties List */
+.template-properties {
+    margin-bottom: 1rem;
+}
+
+.properties-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.properties-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.property-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+}
+
+.property-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.property-type {
+    background: var(--bg-tertiary);
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.property-more {
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Papers Details */
+.papers-details {
+    margin-top: 1rem;
+}
+
+.papers-details summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+}
+
+.papers-details summary:hover {
+    color: var(--primary-color);
+}
+
+.papers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
+
+.paper-item {
+    padding: 0.25rem 0;
+}
+
+.paper-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.paper-link:hover {
+    text-decoration: underline;
+}
+
+/* Template Card Footer */
+.template-card-footer {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.select-template-btn {
+    flex: 1;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}

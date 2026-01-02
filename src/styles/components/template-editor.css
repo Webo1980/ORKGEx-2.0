@@ -1,0 +1,249 @@
+/* Template Editor Styles */
+.template-editor {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.template-title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.template-title-input {
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    flex: 1;
+}
+
+.template-title-input:hover,
+.template-title-input:focus {
+    background: var(--bg-primary);
+    outline: none;
+}
+
+.ai-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.orkg-edit-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.orkg-edit-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Description Section */
+.template-description-section {
+    margin-bottom: 1.5rem;
+}
+
+.template-description-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.template-description-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Properties Section */
+.template-properties-section {
+    margin-bottom: 1.5rem;
+}
+
+.properties-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.properties-header h4 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Properties Table */
+.properties-table-container {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.properties-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.properties-table thead {
+    background: var(--bg-tertiary);
+}
+
+.properties-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.properties-table td {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.properties-table tr.has-error {
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.property-field {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.property-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.property-type {
+    min-width: 120px;
+}
+
+.property-required {
+    width: auto;
+    cursor: pointer;
+}
+
+.error-text {
+    display: block;
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--bg-tertiary);
+    color: var(--error-color);
+}
+
+/* Empty State */
+.empty-properties {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.empty-properties i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-properties p {
+    margin: 0.5rem 0;
+    font-size: 1.125rem;
+}
+
+.empty-properties small {
+    color: var(--text-tertiary);
+}
+
+/* Template Footer */
+.template-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.template-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.stat-item i {
+    opacity: 0.7;
+}
+
+#save-template-btn.has-changes {
+    background: var(--success-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+}

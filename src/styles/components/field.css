@@ -1,0 +1,125 @@
+/* ================================
+   styles/components/field.css
+   Field Step Styling
+   ================================ */
+
+/* Field selection layout */
+.field-selection {
+    padding: var(--spacing-lg);
+}
+
+.field-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.field-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.field-option:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.field-option.selected {
+    border-color: var(--primary-color);
+    background: rgba(var(--primary-color-rgb), 0.05);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.field-option.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.1), transparent);
+    pointer-events: none;
+}
+
+.field-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.field-option.selected .field-icon {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.field-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.field-info h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.field-info p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+}
+
+.field-select {
+    flex-shrink: 0;
+}
+
+.select-field-btn {
+    min-width: 80px;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.field-option.selected .select-field-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Responsive field options */
+@media (max-width: 768px) {
+    .field-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .field-option {
+        padding: var(--spacing-md);
+    }
+    
+    .field-icon {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-xl);
+    }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORKG Annotator v2.0</title>
+
+    <script src="../config/env.js"></script>
+    <!-- Base styles first -->
+    <link rel="stylesheet" href="../styles/base.css">
+    
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../styles/layout/popup.css">
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="../styles/components/header.css">
+    <link rel="stylesheet" href="../styles/components/welcome.css">
+    <link rel="stylesheet" href="../styles/components/steps.css">
+    <link rel="stylesheet" href="../styles/components/cards.css">
+    <link rel="stylesheet" href="../styles/components/problem.css">
+    <link rel="stylesheet" href="../styles/components/modals/modals.css">
+    <link rel="stylesheet" href="../styles/components/modals/field-comparison-modal.css">
+    <link rel="stylesheet" href="../styles/components/tag-display.css">
+    <link rel="stylesheet" href="../styles/components/template-editor.css">
+    <link rel="stylesheet" href="../styles/components/template-list.css">
+    <link rel="stylesheet" href="../styles/components/template-table.css">
+    <link rel="stylesheet" href="../styles/components/analysis.css">
+    <link rel="stylesheet" href="../styles/components/image-table.css">
+    <link rel="stylesheet" href="../styles/components/triple-editor.css">
+    <!-- 
+         <link rel="stylesheet" href="styles/rag-analysis.css">
+         <link rel="stylesheet" href="../styles/content/markers.css">
+    -->
+    <link rel="stylesheet" href="../styles/components/footer.css">
+    <link rel="stylesheet" href="../styles/components/tabs.css">
+    <link rel="stylesheet" href="../styles/components/loading.css">
+    <link rel="stylesheet" href="../styles/components/status.css">
+    <link rel="stylesheet" href="../styles/components/error.css">
+    <link rel="stylesheet" href="../styles/components/toast.css">
+
+    <!-- Theme styles -->
+    <link rel="stylesheet" href="../styles/themes/light.css">
+    <link rel="stylesheet" href="../styles/themes/dark.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Popup Container -->
+    <div class="popup-container">
+        <!-- Fixed Header - Populated by HeaderManager -->
+        <div id="header-container">
+            <!-- Header content will be injected here -->
+        </div>
+
+        <!-- Main Content Area - Managed by ContentManager -->
+        <div class="main-content">
+            <!-- Welcome container will be injected by WelcomeScreen component -->
+            <!-- Analysis interface will be created by ContentManager when needed -->
+        </div>
+
+        <!-- Footer - Populated by FooterManager -->
+        <div id="footer-container">
+            <!-- Footer content will be injected here -->
+            <div class="footer-actions">
+                <button id="start-over-btn" class="btn btn-secondary btn-sm start-over-btn" title="Reset workflow and start over">
+                    <i class="fas fa-undo"></i>
+                    <span>Start Over</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Loading Overlay -->
+    <div id="global-loading-overlay" class="global-loading-overlay hidden">
+        <div class="loading-backdrop"></div>
+        <div class="loading-content">
+            <div class="loading-spinner large"></div>
+            <h2 id="global-loading-title">Initializing ORKG Annotator</h2>
+            <p id="global-loading-message">Loading modules...</p>
+            <div class="loading-progress">
+                <div class="loading-progress-fill" id="loading-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Messages -->
+    <div id="status-messages" class="status-messages" aria-live="polite"></div>
+
+    <!-- Error Screen Template (hidden by default) -->
+    <div id="error-screen-template" class="error-screen hidden">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="error-title">Loading Error</h2>
+            <p class="error-message">Failed to load the ORKG Annotator</p>
+            <details class="error-details">
+                <summary>Error Details</summary>
+                <pre class="error-stack"></pre>
+            </details>
+            <div class="error-actions">
+                <button class="btn btn-primary reload-btn">
+                    <i class="fas fa-refresh"></i>
+                    <span>Reload Extension</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Main Application -->
+    <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,705 @@
+/* ================================
+   src/styles/content/rag-overlay.css
+   ORKG RAG Analysis Overlay Styles - High Specificity Version
+   ================================ */
+
+/* CSS Variables for RAG Overlay */
+:root {
+  --orkg-rag-red: #FF6B6B;
+  --orkg-rag-red-dark: #E85555;
+  --orkg-rag-red-light: #FF8585;
+  --orkg-rag-success: #10b981;
+  --orkg-rag-warning: #f59e0b;
+  --orkg-rag-error: #ef4444;
+  --orkg-rag-info: #3b82f6;
+  --orkg-rag-purple: #8b5cf6;
+}
+
+/* Main Overlay Container */
+body #orkg-rag-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+body #orkg-rag-overlay.orkg-rag-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Reset all child elements */
+body #orkg-rag-overlay * {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
+
+/* Content Container */
+body #orkg-rag-overlay .orkg-rag-content {
+  background: #1f2937 !important;
+  border-radius: 16px !important;
+  max-width: 700px !important;
+  width: 90% !important;
+  max-height: 85vh !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Light theme support */
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-content {
+  background: white !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Header Section */
+body #orkg-rag-overlay .orkg-rag-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 24px 24px 16px !important;
+  background: #111827 !important;
+  border-bottom: 1px solid #374151 !important;
+  position: relative !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-header {
+  background: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logo-container {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logo {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-title-container {
+  flex: 1 !important;
+  padding-right: 32px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #f3f4f6 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 4px 0 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-title {
+  color: #111827 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-brand {
+  color: var(--orkg-rag-red) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-subtitle {
+  font-size: 14px !important;
+  color: #9ca3af !important;
+  line-height: 1.4 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-subtitle {
+  color: #6b7280 !important;
+}
+
+/* Phase Indicators */
+body #orkg-rag-overlay .orkg-rag-phases {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 20px !important;
+  background: #1f2937 !important;
+  border-bottom: 1px solid #374151 !important;
+  gap: 4px !important;
+  overflow-x: auto !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-phases {
+  background: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  opacity: 0.3 !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  z-index: 2 !important;
+  flex-shrink: 0 !important;
+  padding: 0 8px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-active {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-completed {
+  opacity: 1 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-icon {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #374151 !important;
+  border-radius: 50% !important;
+  font-size: 16px !important;
+  color: #9ca3af !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-phase-icon {
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-active .orkg-rag-phase-icon {
+  background: var(--orkg-rag-red) !important;
+  color: white !important;
+  animation: orkg-pulse 1.5s ease-in-out infinite !important;
+  box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-completed .orkg-rag-phase-icon {
+  background: var(--orkg-rag-success) !important;
+  color: white !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-error .orkg-rag-phase-icon {
+  background: var(--orkg-rag-error) !important;
+  color: white !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-label {
+  font-size: 10px !important;
+  color: #9ca3af !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 500 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-phase-label {
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-connector {
+  width: 40px !important;
+  height: 2px !important;
+  background: #374151 !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-phase-connector {
+  background: #e5e7eb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-connector::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: var(--orkg-rag-red) !important;
+  transition: left 0.5s ease !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-phase-item.orkg-completed + .orkg-rag-phase-connector::after {
+  left: 0 !important;
+}
+
+/* Stats Section */
+body #orkg-rag-overlay .orkg-rag-stats {
+  display: flex !important;
+  gap: 24px !important;
+  padding: 12px 24px !important;
+  background: #1f2937 !important;
+  border-bottom: 1px solid #374151 !important;
+  font-size: 13px !important;
+  color: #9ca3af !important;
+  align-items: center !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-stats {
+  background: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-stat-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-stat-item i {
+  color: var(--orkg-rag-red) !important;
+  font-size: 14px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-stat-phase {
+  margin-left: auto !important;
+}
+
+body #orkg-rag-overlay #orkg-phase-text {
+  color: var(--orkg-rag-red) !important;
+  font-weight: 500 !important;
+}
+
+/* Progress Section */
+body #orkg-rag-overlay .orkg-rag-progress-section {
+  padding: 16px 24px !important;
+  background: #1f2937 !important;
+  border-bottom: 1px solid #374151 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-progress-section {
+  background: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-progress-track {
+  background: #374151 !important;
+  border-radius: 6px !important;
+  height: 8px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-progress-track {
+  background: #e5e7eb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-progress-bar {
+  background: linear-gradient(90deg, var(--orkg-rag-red), var(--orkg-rag-red-dark)) !important;
+  height: 100% !important;
+  width: 0% !important;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 6px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-progress-shimmer {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+  animation: orkg-shimmer 2s infinite !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-progress-info {
+  margin-top: 8px !important;
+  font-size: 12px !important;
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-progress-info {
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-progress-percent {
+  color: var(--orkg-rag-red) !important;
+  font-weight: 600 !important;
+}
+
+/* Logs Section */
+body #orkg-rag-overlay .orkg-rag-logs-wrapper {
+  flex: 1 !important;
+  background: #111827 !important;
+  padding: 16px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 200px !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-logs-wrapper {
+  background: #f9fafb !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: #9ca3af !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-logs-title {
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-title i {
+  color: var(--orkg-rag-red) !important;
+  font-size: 14px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-controls {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-btn {
+  background: #374151 !important;
+  border: none !important;
+  color: #9ca3af !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  font-size: 12px !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-btn {
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-btn:hover {
+  background: #4b5563 !important;
+  color: #f3f4f6 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-btn:hover {
+  background: #d1d5db !important;
+  color: #111827 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-btn.orkg-active {
+  background: var(--orkg-rag-red) !important;
+  color: white !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-btn.orkg-paused {
+  background: var(--orkg-rag-warning) !important;
+  color: white !important;
+}
+
+/* Logs Container */
+body #orkg-rag-overlay .orkg-rag-logs-container {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: #d1d5db !important;
+  padding-right: 8px !important;
+  max-height: 250px !important;
+  transition: all 0.3s ease !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-logs-container {
+  color: #4b5563 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-container.orkg-minimized {
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Log Entries */
+body #orkg-rag-overlay .orkg-rag-log-entry {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  padding: 6px 0 !important;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5) !important;
+  animation: orkg-log-fade-in 0.3s ease !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-entry {
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-timestamp {
+  color: #6b7280 !important;
+  font-size: 11px !important;
+  min-width: 65px !important;
+  opacity: 0.7 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-timestamp {
+  color: #9ca3af !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-icon {
+  min-width: 16px !important;
+  text-align: center !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-message {
+  flex: 1 !important;
+  line-height: 1.4 !important;
+  word-break: break-word !important;
+}
+
+/* Log Type Colors */
+body #orkg-rag-overlay .orkg-rag-log-info .orkg-rag-log-icon {
+  color: var(--orkg-rag-info) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-success .orkg-rag-log-icon {
+  color: var(--orkg-rag-success) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-warning .orkg-rag-log-icon {
+  color: var(--orkg-rag-warning) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-error .orkg-rag-log-icon {
+  color: var(--orkg-rag-error) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-batch .orkg-rag-log-icon {
+  color: var(--orkg-rag-red-light) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-property .orkg-rag-log-icon {
+  color: var(--orkg-rag-purple) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-embedding .orkg-rag-log-icon {
+  color: var(--orkg-rag-purple) !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-ai .orkg-rag-log-icon {
+  color: var(--orkg-rag-info) !important;
+}
+
+/* Log Messages by Type */
+body #orkg-rag-overlay .orkg-rag-log-success .orkg-rag-log-message {
+  color: #86efac !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-success .orkg-rag-log-message {
+  color: #16a34a !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-warning .orkg-rag-log-message {
+  color: #fde047 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-warning .orkg-rag-log-message {
+  color: #ca8a04 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-log-error .orkg-rag-log-message {
+  color: #fca5a5 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-log-error .orkg-rag-log-message {
+  color: #dc2626 !important;
+}
+
+/* Close Button */
+body #orkg-rag-overlay .orkg-rag-close-btn {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: #374151 !important;
+  border: none !important;
+  color: #9ca3af !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  transition: all 0.2s !important;
+  z-index: 10 !important;
+  line-height: 1 !important;
+}
+
+body #orkg-rag-overlay[data-theme="light"] .orkg-rag-close-btn {
+  background: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-close-btn:hover {
+  background: var(--orkg-rag-red) !important;
+  color: white !important;
+  transform: rotate(90deg) !important;
+}
+
+/* Scrollbar Styles */
+body #orkg-rag-overlay .orkg-rag-logs-container::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 3px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 3px !important;
+}
+
+body #orkg-rag-overlay .orkg-rag-logs-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Animations */
+@keyframes orkg-pulse {
+  0%, 100% { 
+    transform: scale(1) !important;
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4) !important;
+  }
+  50% { 
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0) !important;
+  }
+}
+
+@keyframes orkg-shimmer {
+  0% { transform: translateX(-100%) !important; }
+  100% { transform: translateX(100%) !important; }
+}
+
+@keyframes orkg-log-fade-in {
+  from {
+    opacity: 0 !important;
+    transform: translateX(-10px) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body #orkg-rag-overlay .orkg-rag-content {
+    max-width: 95% !important;
+    max-height: 90vh !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phases {
+    gap: 2px !important;
+    padding: 12px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phase-item {
+    padding: 0 4px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phase-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phase-label {
+    font-size: 9px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phase-connector {
+    width: 20px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-stats {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    font-size: 12px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-logs-container {
+    max-height: 150px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-log-timestamp {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body #orkg-rag-overlay {
+    padding: 10px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-header {
+    padding: 16px 16px 12px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-title {
+    font-size: 16px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-subtitle {
+    font-size: 12px !important;
+  }
+  
+  body #orkg-rag-overlay .orkg-rag-phase-label {
+    display: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body #orkg-rag-overlay {
+    display: none !important;
+  }
+}

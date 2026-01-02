@@ -1,0 +1,344 @@
+/* Light Theme Styles */
+
+/* Light theme is applied when explicitly set or as default */
+:root,
+[data-theme="light"] {
+  /* Primary Brand Colors */
+  --primary-color: #e86161;
+  --primary-hover: #d63531;
+  --primary-dark: #c82333;
+  --primary-light: #f5b7b7;
+  --primary-bg: rgba(232, 97, 97, 0.1);
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-hover: #f1f3f4;
+  --bg-focus: #ffffff;
+  --bg-disabled: #e9ecef;
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+  
+  /* Text Colors */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+  --text-disabled: #adb5bd;
+  --text-placeholder: #6c757d;
+  --text-inverse: #ffffff;
+  
+  /* Border Colors */
+  --border-color: #dee2e6;
+  --border-light: #e9ecef;
+  --border-dark: #adb5bd;
+  --border-focus: var(--primary-color);
+  
+  /* Status Colors */
+  --success-color: #28a745;
+  --success-hover: #218838;
+  --success-light: #d4edda;
+  --success-bg: rgba(40, 167, 69, 0.1);
+  --success-border: #c3e6cb;
+  --success-text: #155724;
+  
+  --warning-color: #ffc107;
+  --warning-hover: #e0a800;
+  --warning-light: #fff3cd;
+  --warning-bg: rgba(255, 193, 7, 0.1);
+  --warning-border: #ffeaa7;
+  --warning-text: #856404;
+  
+  --error-color: #dc3545;
+  --error-hover: #c82333;
+  --error-light: #f8d7da;
+  --error-bg: rgba(220, 53, 69, 0.1);
+  --error-border: #f5c6cb;
+  --error-text: #721c24;
+  
+  --info-color: #17a2b8;
+  --info-hover: #138496;
+  --info-light: #d1ecf1;
+  --info-bg: rgba(23, 162, 184, 0.1);
+  --info-border: #bee5eb;
+  --info-text: #0c5460;
+  
+  /* Component-specific Colors */
+  --subject-color: #007bff;
+  --predicate-color: #28a745;
+  --object-color: #ffc107;
+  
+  /* Navigation Colors */
+  --nav-bg: var(--bg-secondary);
+  --nav-border: var(--border-light);
+  --nav-text: var(--text-secondary);
+  --nav-text-active: var(--primary-color);
+  --nav-indicator: var(--primary-color);
+  
+  /* Card Colors */
+  --card-bg: var(--bg-primary);
+  --card-border: var(--border-light);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: rgba(0, 0, 0, 0.15);
+  
+  /* Input Colors */
+  --input-bg: var(--bg-primary);
+  --input-border: var(--border-color);
+  --input-focus-border: var(--primary-color);
+  --input-focus-shadow: var(--primary-bg);
+  --input-disabled-bg: var(--bg-disabled);
+  
+  /* Button Colors */
+  --button-primary-bg: var(--primary-color);
+  --button-primary-text: #ffffff;
+  --button-primary-hover: var(--primary-hover);
+  --button-secondary-bg: var(--bg-secondary);
+  --button-secondary-text: var(--text-primary);
+  --button-secondary-hover: var(--bg-hover);
+  
+  /* Modal Colors */
+  --modal-bg: var(--bg-primary);
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --modal-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Tooltip Colors */
+  --tooltip-bg: #333333;
+  --tooltip-text: #ffffff;
+  --tooltip-shadow: rgba(0, 0, 0, 0.2);
+  
+  /* Highlight Colors */
+  --highlight-bg: #fff3cd;
+  --highlight-border: #ffc107;
+  --highlight-text: var(--text-primary);
+  
+  /* Code Colors */
+  --code-bg: #f8f9fa;
+  --code-text: #e83e8c;
+  --code-border: var(--border-light);
+  
+  /* Selection Colors */
+  --selection-bg: rgba(232, 97, 97, 0.2);
+  --selection-text: var(--text-primary);
+  
+  /* Scrollbar Colors */
+  --scrollbar-track: var(--bg-secondary);
+  --scrollbar-thumb: var(--border-dark);
+  --scrollbar-thumb-hover: var(--text-secondary);
+  
+  /* AI Editor Colors */
+  --ai-suggestion-bg: var(--bg-secondary);
+  --ai-suggestion-border: var(--border-light);
+  --ai-suggestion-hover: var(--bg-hover);
+  --ai-confidence-high: var(--success-color);
+  --ai-confidence-medium: var(--warning-color);
+  --ai-confidence-low: var(--error-color);
+  
+  /* Progress Colors */
+  --progress-bg: var(--bg-secondary);
+  --progress-fill: var(--primary-color);
+  --progress-text: var(--text-secondary);
+  
+  /* Skeleton Loading Colors */
+  --skeleton-base: var(--bg-secondary);
+  --skeleton-highlight: var(--bg-hover);
+  
+  /* Table Colors */
+  --table-bg: var(--bg-primary);
+  --table-stripe: var(--bg-secondary);
+  --table-border: var(--border-light);
+  --table-hover: var(--bg-hover);
+  
+  /* Badge Colors */
+  --badge-bg: var(--bg-secondary);
+  --badge-text: var(--text-secondary);
+  --badge-border: var(--border-light);
+  
+  /* Card background - for compatibility */
+  --card-background: var(--bg-primary);
+}
+
+/* Light theme specific overrides */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Light theme component adjustments */
+[data-theme="light"] .popup {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .workflow-nav {
+  background-color: var(--nav-bg);
+  border-bottom-color: var(--nav-border);
+}
+
+[data-theme="light"] .step-item {
+  color: var(--nav-text);
+}
+
+[data-theme="light"] .step-item.active {
+  color: var(--nav-text-active);
+}
+
+[data-theme="light"] .step-indicator::after {
+  background-color: var(--nav-indicator);
+}
+
+[data-theme="light"] .metadata-card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+[data-theme="light"] .metadata-card:hover {
+  box-shadow: 0 4px 8px var(--card-hover-shadow);
+}
+
+[data-theme="light"] .form-input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 2px var(--input-focus-shadow);
+}
+
+[data-theme="light"] .form-button.primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+[data-theme="light"] .form-button.primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+[data-theme="light"] .form-button.secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+[data-theme="light"] .form-button.secondary:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+[data-theme="light"] .toast {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .modal {
+  background-color: var(--modal-bg);
+  box-shadow: 0 20px 40px var(--modal-shadow);
+}
+
+[data-theme="light"] .modal-overlay {
+  background-color: var(--modal-overlay);
+}
+
+[data-theme="light"] .ai-editor-container {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .ai-suggestions-panel {
+  background-color: var(--ai-suggestion-bg);
+  border-color: var(--ai-suggestion-border);
+}
+
+[data-theme="light"] .ai-suggestion-item:hover {
+  background-color: var(--ai-suggestion-hover);
+}
+
+[data-theme="light"] .confidence-fill.high {
+  background-color: var(--ai-confidence-high);
+}
+
+[data-theme="light"] .confidence-fill.medium {
+  background-color: var(--ai-confidence-medium);
+}
+
+[data-theme="light"] .confidence-fill.low {
+  background-color: var(--ai-confidence-low);
+}
+
+[data-theme="light"] .progress-bar {
+  background-color: var(--progress-bg);
+}
+
+[data-theme="light"] .progress-fill {
+  background-color: var(--progress-fill);
+}
+
+[data-theme="light"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 25%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 75%
+  );
+}
+
+/* Light theme scrollbar styling */
+[data-theme="light"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Light theme selection styling */
+[data-theme="light"] ::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+[data-theme="light"] ::-moz-selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* Light theme focus indicators */
+[data-theme="light"] :focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Light theme high contrast adjustments */
+@media (prefers-contrast: high) {
+  [data-theme="light"] {
+    --border-color: #000000;
+    --text-secondary: #000000;
+    --bg-hover: #f0f0f0;
+  }
+}
+
+/* Light theme print styles */
+@media print {
+  [data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #000000;
+  }
+  
+  [data-theme="light"] .popup {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+}

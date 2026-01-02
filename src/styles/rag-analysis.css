@@ -1,0 +1,345 @@
+/* ================================
+ * RAG Analysis Loading State Styles
+ * ================================ */
+
+/* Main loading container */
+.rag-analysis-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 24px;
+}
+
+.rag-loading-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.rag-loading-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.rag-spinner {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rag-spinner i {
+    font-size: 24px;
+    color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rag-loading-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Progress Container */
+.rag-progress-container {
+    margin-bottom: 24px;
+}
+
+.rag-progress-bar {
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.rag-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.rag-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.rag-progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+#rag-progress-percentage {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+#rag-progress-phase {
+    font-style: italic;
+}
+
+/* Logs Container */
+.rag-logs-container {
+    margin-top: 20px;
+}
+
+.rag-logs-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.rag-logs-header i {
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+.rag-logs {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    max-height: 180px;
+    overflow-y: auto;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Custom scrollbar for logs */
+.rag-logs::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rag-logs::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+}
+
+.rag-logs::-webkit-scrollbar-thumb {
+    background: var(--text-tertiary);
+    border-radius: 3px;
+}
+
+.rag-logs::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Log entries */
+.rag-log-entry {
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    color: var(--text-secondary);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rag-log-icon {
+    margin-right: 8px;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+}
+
+.rag-log-time {
+    margin-right: 8px;
+    color: var(--text-tertiary);
+    font-size: 10px;
+    flex-shrink: 0;
+}
+
+.rag-log-message {
+    flex: 1;
+    word-break: break-word;
+}
+
+/* Log entry types */
+.rag-log-info {
+    color: var(--text-secondary);
+}
+
+.rag-log-info .rag-log-icon {
+    color: var(--info-color);
+}
+
+.rag-log-success {
+    color: var(--success-color);
+}
+
+.rag-log-success .rag-log-icon {
+    color: var(--success-color);
+}
+
+.rag-log-warning {
+    color: var(--warning-color);
+}
+
+.rag-log-warning .rag-log-icon {
+    color: var(--warning-color);
+}
+
+.rag-log-error {
+    color: var(--error-color);
+}
+
+.rag-log-error .rag-log-icon {
+    color: var(--error-color);
+}
+
+.rag-log-section {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.rag-log-section .rag-log-icon {
+    color: var(--primary-color);
+}
+
+/* Info message */
+.rag-info {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: 6px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--info-color);
+}
+
+.rag-info i {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* Status indicators in header */
+.rag-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--success-color);
+    margin-left: 8px;
+}
+
+.rag-status i {
+    margin-right: 6px;
+    font-size: 10px;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .rag-loading-card {
+    background: var(--bg-secondary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .rag-logs {
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .rag-progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .rag-info {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .rag-loading-card {
+        padding: 20px;
+    }
+    
+    .rag-loading-header h3 {
+        font-size: 18px;
+    }
+    
+    .rag-logs {
+        max-height: 140px;
+        font-size: 10px;
+    }
+}
+
+/* Animation for completion */
+.rag-analysis-complete .rag-progress-fill {
+    background: var(--success-color);
+}
+
+.rag-analysis-complete .rag-spinner i {
+    animation: none;
+    color: var(--success-color);
+}
+
+.rag-analysis-complete .rag-spinner i::before {
+    content: "\f00c"; /* Font Awesome check icon */
+}
+
+/* Error state */
+.rag-analysis-error .rag-progress-fill {
+    background: var(--error-color);
+}
+
+.rag-analysis-error .rag-spinner i {
+    animation: none;
+    color: var(--error-color);
+}
+
+.rag-analysis-error .rag-spinner i::before {
+    content: "\f00d"; /* Font Awesome times icon */
+}

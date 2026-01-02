@@ -1,0 +1,382 @@
+/* ================================
+   styles/components/tabs.css
+   Tab Styles CSS - Visual Indicators and Animations
+   ================================ */
+
+/* Enhanced step indicators with visual feedback */
+.step-item {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects for interactive steps */
+.step-item:not(.disabled):hover {
+    background-color: var(--bg-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.step-item:not(.disabled):hover .step-number {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+/* Active step styling */
+.step-item.active {
+    background-color: rgba(var(--primary-color-rgb), 0.08);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+}
+
+.step-item.active .step-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.3);
+    animation: pulse-primary 2s infinite;
+}
+
+.step-item.active .step-label {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Completed step styling */
+.step-item.completed {
+    background-color: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.step-item.completed .step-number {
+    background: linear-gradient(135deg, var(--success-color), #22c55e);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+    animation: checkmark-appear 0.5s ease-out;
+}
+
+.step-item.completed .step-label {
+    color: var(--success-color);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Pending/future step styling */
+.step-item.pending {
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+.step-item.pending .step-number {
+    background-color: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    color: var(--text-tertiary);
+}
+
+.step-item.pending .step-label {
+    color: var(--text-tertiary);
+}
+
+/* Disabled step styling */
+.step-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.step-item.disabled:hover {
+    transform: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Blocked navigation feedback */
+.step-item.blocked-feedback {
+    animation: shake 0.6s ease-in-out;
+    background-color: rgba(var(--error-color-rgb), 0.1);
+    border: 1px solid rgba(var(--error-color-rgb), 0.2);
+}
+
+.step-item.blocked-feedback .step-number {
+    background-color: var(--error-color);
+    color: white;
+    animation: error-pulse 0.6s ease-in-out;
+}
+
+/* Highlight animation for programmatic highlighting */
+.step-item.highlight {
+    animation: highlight-step 2s ease-in-out;
+}
+
+/* Step number enhanced styling */
+.step-number {
+    position: relative;
+    overflow: hidden;
+}
+
+.step-number::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.step-item:hover:not(.disabled) .step-number::before {
+    left: 100%;
+}
+
+/* Enhanced step labels */
+.step-label {
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.step-item:hover:not(.disabled) .step-label {
+    color: var(--primary-color);
+}
+
+/* Progress bar enhancements */
+.step-progress-bar {
+    position: relative;
+    overflow: visible;
+}
+
+.step-progress-fill {
+    position: relative;
+    box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.step-progress-fill::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(var(--primary-color-rgb), 0.4);
+    animation: progress-dot 1.5s ease-in-out infinite;
+}
+
+/* Connection lines between steps (optional visual enhancement) */
+.step-indicators::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 10%, 
+        var(--border-light) 10%, 
+        var(--border-light) 90%, 
+        transparent 90%
+    );
+    z-index: -1;
+    transform: translateY(-50%);
+}
+
+/* Individual step connectors */
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background: var(--border-light);
+    z-index: -1;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.step-item.completed:not(:last-child)::after {
+    background: var(--success-color);
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.3);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    .step-indicators {
+        gap: 2px;
+    }
+    
+    .step-item {
+        min-width: 50px;
+        padding: var(--spacing-xs);
+    }
+    
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    .step-label {
+        font-size: 10px;
+    }
+}
+
+/* Keyframe animations */
+@keyframes pulse-primary {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.5);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes checkmark-appear {
+    0% {
+        transform: scale(0.5) rotate(-45deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes error-pulse {
+    0%, 100% {
+        background-color: var(--error-color);
+        transform: scale(1);
+    }
+    50% {
+        background-color: #ff4444;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes highlight-step {
+    0% {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    25% {
+        background-color: rgba(var(--primary-color-rgb), 0.15);
+        box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.2);
+    }
+    75% {
+        background-color: rgba(var(--primary-color-rgb), 0.15);
+        box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.2);
+    }
+    100% {
+        background-color: transparent;
+        box-shadow: none;
+    }
+}
+
+@keyframes progress-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+/* Accessibility improvements */
+.step-item:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    background-color: var(--bg-hover);
+}
+
+.step-item[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.step-item[aria-current="step"] {
+    position: relative;
+}
+
+.step-item[aria-current="step"]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-lg);
+    opacity: 0.5;
+    animation: current-step-glow 2s infinite;
+}
+
+@keyframes current-step-glow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] .step-item.active {
+    background-color: rgba(var(--primary-color-rgb), 0.12);
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+}
+
+[data-theme="dark"] .step-item.completed {
+    background-color: rgba(74, 222, 128, 0.08);
+    border-color: rgba(74, 222, 128, 0.2);
+}
+
+[data-theme="dark"] .step-item.blocked-feedback {
+    background-color: rgba(248, 113, 113, 0.12);
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .step-item {
+        border: 2px solid currentColor;
+    }
+    
+    .step-item.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .step-item.completed {
+        background-color: var(--success-color);
+        color: white;
+    }
+    
+    .step-item.pending {
+        background-color: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .step-item,
+    .step-number,
+    .step-label,
+    .step-progress-fill {
+        transition: none;
+        animation: none;
+    }
+    
+    .step-item:hover {
+        transform: none;
+    }
+}

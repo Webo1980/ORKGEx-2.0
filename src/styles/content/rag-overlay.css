@@ -1,0 +1,132 @@
+/* src/styles/content/rag-overlay.css - NEW FILE */
+
+.orkg-rag-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 2147483647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    animation: orkgFadeIn 0.3s ease-out;
+}
+
+.orkg-rag-content {
+    width: 90%;
+    max-width: 500px;
+}
+
+.orkg-rag-modal {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: orkgSlideUp 0.3s ease-out;
+}
+
+.orkg-rag-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.orkg-rag-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border: 3px solid #f3f4f6;
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: orkgSpin 1s linear infinite;
+}
+
+.orkg-rag-header h2 {
+    margin: 0 0 8px 0;
+    color: #1f2937;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.orkg-rag-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.orkg-rag-progress {
+    margin-bottom: 24px;
+}
+
+.orkg-rag-progress-bar {
+    background: #f3f4f6;
+    border-radius: 8px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.orkg-rag-progress-fill {
+    background: #3b82f6;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.orkg-rag-progress-info {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.orkg-rag-logs {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 12px;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 12px;
+    color: #4b5563;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+}
+
+.orkg-rag-log-entry {
+    margin: 4px 0;
+    padding: 4px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.orkg-rag-log-entry:last-child {
+    border-bottom: none;
+}
+
+.orkg-rag-footer {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+@keyframes orkgFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes orkgSlideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes orkgSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

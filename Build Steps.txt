@@ -1,0 +1,9 @@
+# Install nodemon for watching (optional)
+npm install --save-dev nodemon
+
+# Build both bundles
+npm run build:all
+
+# Or build individually
+npm run build:content
+npm run build:background

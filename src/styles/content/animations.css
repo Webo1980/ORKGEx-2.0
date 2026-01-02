@@ -1,0 +1,320 @@
+/* ================================
+   src/styles/content/animations.css - ORKG Animation Styles (Complete)
+   ================================ */
+
+/* Animation Clone for fly effect */
+.orkg-animation-clone {
+    position: fixed !important;
+    pointer-events: none !important;
+    will-change: transform, opacity, left, top !important;
+    transition: none !important;
+    z-index: 999999 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Fly animation */
+.orkg-fly-animation {
+    animation: flyToExtension 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+    z-index: 100000 !important;
+}
+
+@keyframes flyToExtension {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(0.6) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Particle trail effect */
+.orkg-particle {
+    position: fixed !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    z-index: 999998 !important;
+    background: radial-gradient(circle, #FF5252 0%, #FF5252 40%, transparent 70%) !important;
+    box-shadow: 0 0 6px rgba(255, 82, 82, 0.8),
+                0 0 12px rgba(255, 82, 82, 0.4) !important;
+    opacity: 1 !important;
+    transition: all 800ms ease-out !important;
+}
+
+/* Particle fade animation */
+.orkg-particle-fade {
+    animation: particleFade 800ms ease-out forwards !important;
+    opacity: 0 !important;
+    transform: scale(0.5) !important;
+}
+
+@keyframes particleFade {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) translateY(-10px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.3) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Arrival explosion effect */
+.orkg-arrival-explosion {
+    position: fixed !important;
+    width: 80px !important;
+    height: 80px !important;
+    margin-left: -40px !important;
+    margin-top: -40px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, 
+        rgba(255, 82, 82, 0.8) 0%, 
+        rgba(255, 82, 82, 0.4) 30%, 
+        rgba(255, 82, 82, 0.1) 60%, 
+        transparent 100%) !important;
+    pointer-events: none !important;
+    z-index: 999999 !important;
+    animation: explosionEffect 600ms ease-out forwards !important;
+}
+
+/* Alternative explosion animation using simple gradient */
+@keyframes explosion {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes explosionEffect {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Success ripple effect */
+.orkg-success-ripple {
+    position: fixed !important;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    border: 3px solid #4CAF50 !important;
+    pointer-events: none !important;
+    z-index: 999999 !important;
+    animation: successRipple 1s ease-out forwards !important;
+}
+
+@keyframes successRipple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Curved path trail */
+.orkg-path-trail {
+    position: fixed !important;
+    width: 4px !important;
+    height: 4px !important;
+    background: #FF5252 !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    z-index: 999997 !important;
+    opacity: 0.8 !important;
+    animation: trailFade 400ms ease-out forwards !important;
+}
+
+@keyframes trailFade {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Glow effect for active elements */
+.orkg-glow {
+    animation: glowPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 82, 82, 0.5),
+                    0 0 10px rgba(255, 82, 82, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(255, 82, 82, 0.7),
+                    0 0 20px rgba(255, 82, 82, 0.4),
+                    0 0 30px rgba(255, 82, 82, 0.2);
+    }
+}
+
+/* Shake animation for errors */
+.orkg-shake {
+    animation: shakeError 500ms ease-in-out !important;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-10px); }
+    20% { transform: translateX(10px); }
+    30% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    50% { transform: translateX(-6px); }
+    60% { transform: translateX(6px); }
+    70% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+    90% { transform: translateX(-2px); }
+}
+
+/* Bounce animation */
+.orkg-bounce {
+    animation: bounceIn 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fade animations */
+.orkg-fade-in {
+    animation: fadeIn 300ms ease-in !important;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.orkg-fade-out {
+    animation: fadeOut 300ms ease-out forwards !important;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Slide animations */
+.orkg-slide-up {
+    animation: slideUp 400ms ease-out !important;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.orkg-slide-down {
+    animation: slideDown 400ms ease-out !important;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Rotation animation */
+.orkg-rotate {
+    animation: rotate360 600ms ease-in-out !important;
+}
+
+@keyframes rotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading spinner */
+.orkg-spinner {
+    width: 20px !important;
+    height: 20px !important;
+    border: 3px solid rgba(255, 82, 82, 0.1) !important;
+    border-top-color: #FF5252 !important;
+    border-radius: 50% !important;
+    animation: spin 1s linear infinite !important;
+    display: inline-block !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alternative spin animation for compatibility */
+@keyframes orkg-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Highlight flash for attention */
+.orkg-flash {
+    animation: flashHighlight 1s ease-out !important;
+}
+
+@keyframes flashHighlight {
+    0%, 100% {
+        background-color: transparent;
+    }
+    25% {
+        background-color: rgba(255, 82, 82, 0.2);
+    }
+    50% {
+        background-color: rgba(255, 82, 82, 0.1);
+    }
+}

@@ -1,0 +1,250 @@
+/* ================================
+   src/styles/content/overlays.css
+   Overlay styles for content highlighting
+   ================================ */
+
+/* Overlay container */
+.orkg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Content highlight overlay */
+.orkg-highlight-overlay {
+    position: absolute;
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid rgba(76, 175, 80, 0.5);
+    border-radius: 4px;
+    pointer-events: none;
+    transition: all 300ms ease;
+}
+
+/* Selection overlay */
+.orkg-selection-overlay {
+    position: absolute;
+    background: rgba(33, 150, 243, 0.1);
+    border: 2px dashed rgba(33, 150, 243, 0.5);
+    border-radius: 4px;
+    pointer-events: none;
+    animation: selectionPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectionPulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Focus overlay */
+.orkg-focus-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9998;
+    pointer-events: none;
+}
+
+/* Spotlight effect */
+.orkg-spotlight {
+    position: absolute;
+    border-radius: 4px;
+    box-shadow: 
+        0 0 0 9999px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 255, 255, 0.1) inset;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 300ms ease;
+}
+
+/* Grid overlay for tables */
+.orkg-table-grid-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.orkg-table-grid-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(156, 39, 176, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(156, 39, 176, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Text selection overlay */
+.orkg-text-selection {
+    background: rgba(255, 87, 34, 0.2) !important;
+    position: relative;
+}
+
+.orkg-text-selection::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(255, 87, 34, 0.5);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+/* Image overlay with info */
+.orkg-image-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 8px;
+    font-size: 11px;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+}
+
+.orkg-image-container:hover .orkg-image-info-overlay {
+    opacity: 1;
+}
+
+/* Dimmed overlay for non-selected items */
+.orkg-dimmed {
+    opacity: 0.3;
+    filter: grayscale(50%);
+    transition: all 300ms ease;
+}
+
+/* Extraction progress overlay */
+.orkg-extraction-progress {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(33, 33, 33, 0.95);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    z-index: 99999;
+    min-width: 300px;
+    text-align: center;
+}
+
+.orkg-extraction-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.orkg-extraction-progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 2px;
+    transition: width 300ms ease;
+}
+
+/* Tooltip overlay */
+.orkg-tooltip-overlay {
+    position: absolute;
+    background: rgba(33, 33, 33, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    white-space: nowrap;
+}
+
+.orkg-tooltip-overlay.visible {
+    opacity: 1;
+}
+
+/* Error overlay */
+.orkg-error-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #f44336;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    animation: slideInFromTop 300ms ease;
+}
+
+/* Success overlay */
+.orkg-success-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    animation: slideInFromTop 300ms ease;
+}
+
+/* Glass morphism overlay */
+.orkg-glass-overlay {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Mask for complex selections */
+.orkg-selection-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9997;
+    pointer-events: none;
+}
+
+.orkg-selection-mask svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive overlays */
+@media (max-width: 768px) {
+    .orkg-extraction-progress {
+        min-width: 250px;
+        padding: 15px 20px;
+    }
+    
+    .orkg-error-overlay,
+    .orkg-success-overlay {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+}

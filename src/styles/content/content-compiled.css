@@ -1,0 +1,985 @@
+/* ORKG Content Script Styles
+ * Auto-generated file - DO NOT EDIT DIRECTLY
+ * Generated on: 2025-08-14T13:14:55.913Z
+ */
+
+/* ===== Source: markers.css ===== */
+/* ================================
+   src/styles/content/markers.css - Enhanced with ORKG icon styles
+   ================================ */
+
+/* Base marker styles */
+.orkg-marker {
+    position: absolute !important;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: var(--marker-color, #4CAF50);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+/* ORKG icon container */
+.marker-orkg-icon-container {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+/* ORKG icon */
+.marker-orkg-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Make icon white */
+}
+
+/* Type indicator badge */
+.marker-type-indicator {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.marker-type-indicator i {
+    font-size: 10px;
+    color: var(--marker-color, #4CAF50);
+}
+
+/* Restored marker special appearance */
+.orkg-marker.marker-restored {
+    border-color: #FFD700;
+    border-width: 3px;
+    animation: pulseGold 2s ease-out;
+}
+
+.orkg-marker.marker-restored::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 14px;
+    border: 2px solid #FFD700;
+    opacity: 0.5;
+    animation: expandFade 1.5s ease-out;
+}
+
+/* Restoration animation */
+.orkg-marker-restoration {
+    animation: restoration 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes restoration {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGold {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+    }
+}
+
+@keyframes expandFade {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}
+
+/* Restoration bubble */
+.restoration-bubble {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFD700;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-bottom: 8px;
+    animation: bubbleFloat 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes bubbleFloat {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-15px);
+    }
+}
+
+/* Extracting animation */
+.orkg-marker-extracting {
+    animation: extractPulse 0.5s ease-out;
+    transform: scale(0.8);
+    opacity: 0.5;
+}
+
+@keyframes extractPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+/* Enhanced tooltip */
+.orkg-marker .marker-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(33, 33, 33, 0.95);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    min-width: 250px;
+    max-width: 350px;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease, visibility 300ms ease;
+    margin-bottom: 10px;
+    pointer-events: none;
+}
+
+/* Tooltip header */
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltip-type-badge {
+    background: var(--marker-color, #4CAF50);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.tooltip-score {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.tooltip-info {
+    margin-bottom: 4px;
+}
+
+.tooltip-label {
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+/* Hover states */
+.orkg-marker:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.orkg-marker:hover .marker-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Type-specific colors */
+.orkg-image-marker {
+    --marker-color: #4CAF50;
+}
+
+.orkg-table-marker {
+    --marker-color: #9C27B0;
+}
+
+.orkg-text-marker {
+    --marker-color: #FF5722;
+}
+
+/* Importance levels */
+.orkg-marker.importance-high {
+    border-width: 3px;
+}
+
+.orkg-marker.importance-recommended {
+    border-width: 2px;
+}
+
+.orkg-marker.importance-low {
+    opacity: 0.9;
+    border-width: 1px;
+}
+
+.orkg-marker.importance-negligible {
+    opacity: 0.7;
+    border-width: 1px;
+}
+
+/* Text Markers */
+.text-marker {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    border: 2px solid #1565C0;
+}
+
+.text-marker:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.6);
+}
+
+.text-marker .marker-icon {
+    color: white;
+}
+
+/* Highlighted Text */
+.orkg-highlighted {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 2px 0;
+    border-radius: 3px;
+}
+
+.orkg-highlighted:hover {
+    filter: brightness(0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.orkg-rag-highlight {
+    border-bottom: 2px dashed currentColor;
+}
+
+/* Text Edit Popup */
+.text-edit-popup {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 400px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    z-index: 10002;
+}
+
+.text-edit-popup .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.text-edit-popup .popup-header h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.text-edit-popup .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-edit-popup .close-btn:hover {
+    color: #333;
+}
+
+.text-edit-popup .popup-content {
+    padding: 15px;
+}
+
+.text-edit-popup .property-field,
+.text-edit-popup .value-field,
+.text-edit-popup .type-field {
+    margin-bottom: 12px;
+}
+
+.text-edit-popup label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.text-edit-popup input,
+.text-edit-popup textarea,
+.text-edit-popup select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.text-edit-popup textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.text-edit-popup input:focus,
+.text-edit-popup textarea:focus,
+.text-edit-popup select:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.text-edit-popup .popup-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 15px;
+    border-top: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+}
+
+.text-edit-popup button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.text-edit-popup .save-btn {
+    background: #2196F3;
+    color: white;
+    flex: 1;
+}
+
+.text-edit-popup .save-btn:hover {
+    background: #1976D2;
+}
+
+.text-edit-popup .cancel-btn {
+    background: #e0e0e0;
+    color: #333;
+    flex: 1;
+}
+
+.text-edit-popup .cancel-btn:hover {
+    background: #d0d0d0;
+}
+
+.text-edit-popup .delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.text-edit-popup .delete-btn:hover {
+    background: #d32f2f;
+}
+
+/* Highlight Mode Indicator */
+#orkg-highlight-indicator {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ===== Source: animations.css ===== */
+/* ================================
+   src/styles/content/animations.css
+   Animation styles for extraction effects
+   ================================ */
+
+/* Animation clone */
+.orkg-animation-clone {
+    will-change: transform, opacity, left, top;
+    transition: transform 300ms ease;
+}
+
+/* Fly animation */
+.orkg-fly-animation {
+    animation: flyEffect 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes flyEffect {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.8) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.3) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Particle styles */
+.orkg-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999998;
+    will-change: transform, opacity, left, top;
+    box-shadow: 0 0 6px currentColor;
+}
+
+/* Particle animation */
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Arrival explosion */
+.orkg-arrival-explosion {
+    animation: orkgExplosion 500ms ease-out forwards;
+}
+
+@keyframes orkgExplosion {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Trail effect */
+.orkg-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999997;
+    will-change: opacity, transform;
+    animation: trailFade 500ms ease-out forwards;
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Extraction animation for target element */
+.orkg-extracting {
+    animation: extractingPulse 800ms ease-out;
+}
+
+@keyframes extractingPulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    }
+}
+
+/* Hover effect on target element */
+.orkg-hover {
+    outline: 3px solid rgba(76, 175, 80, 0.5) !important;
+    outline-offset: 2px !important;
+    transition: outline 300ms ease;
+}
+
+/* Success flash */
+.orkg-success-flash {
+    animation: successFlash 600ms ease-out;
+}
+
+@keyframes successFlash {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(76, 175, 80, 0.2);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+/* Loading spinner for markers */
+.orkg-marker-loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bounce effect */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shake effect for errors */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Glow effect */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(76, 175, 80, 1), 0 0 30px rgba(76, 175, 80, 0.8);
+    }
+}
+
+/* Fade in/out */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Slide animations */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToTop {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Scale animations */
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Ripple effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Sweep effect */
+@keyframes sweep {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ===== Source: overlays.css ===== */
+/* ================================
+   src/styles/content/overlays.css
+   Overlay styles for content highlighting
+   ================================ */
+
+/* Overlay container */
+.orkg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Content highlight overlay */
+.orkg-highlight-overlay {
+    position: absolute;
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid rgba(76, 175, 80, 0.5);
+    border-radius: 4px;
+    pointer-events: none;
+    transition: all 300ms ease;
+}
+
+/* Selection overlay */
+.orkg-selection-overlay {
+    position: absolute;
+    background: rgba(33, 150, 243, 0.1);
+    border: 2px dashed rgba(33, 150, 243, 0.5);
+    border-radius: 4px;
+    pointer-events: none;
+    animation: selectionPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectionPulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Focus overlay */
+.orkg-focus-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9998;
+    pointer-events: none;
+}
+
+/* Spotlight effect */
+.orkg-spotlight {
+    position: absolute;
+    border-radius: 4px;
+    box-shadow: 
+        0 0 0 9999px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 255, 255, 0.1) inset;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 300ms ease;
+}
+
+/* Grid overlay for tables */
+.orkg-table-grid-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.orkg-table-grid-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(156, 39, 176, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(156, 39, 176, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Text selection overlay */
+.orkg-text-selection {
+    background: rgba(255, 87, 34, 0.2) !important;
+    position: relative;
+}
+
+.orkg-text-selection::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(255, 87, 34, 0.5);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+/* Image overlay with info */
+.orkg-image-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 8px;
+    font-size: 11px;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+}
+
+.orkg-image-container:hover .orkg-image-info-overlay {
+    opacity: 1;
+}
+
+/* Dimmed overlay for non-selected items */
+.orkg-dimmed {
+    opacity: 0.3;
+    filter: grayscale(50%);
+    transition: all 300ms ease;
+}
+
+/* Extraction progress overlay */
+.orkg-extraction-progress {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(33, 33, 33, 0.95);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    z-index: 99999;
+    min-width: 300px;
+    text-align: center;
+}
+
+.orkg-extraction-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.orkg-extraction-progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 2px;
+    transition: width 300ms ease;
+}
+
+/* Tooltip overlay */
+.orkg-tooltip-overlay {
+    position: absolute;
+    background: rgba(33, 33, 33, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    white-space: nowrap;
+}
+
+.orkg-tooltip-overlay.visible {
+    opacity: 1;
+}
+
+/* Error overlay */
+.orkg-error-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #f44336;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    animation: slideInFromTop 300ms ease;
+}
+
+/* Success overlay */
+.orkg-success-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    animation: slideInFromTop 300ms ease;
+}
+
+/* Glass morphism overlay */
+.orkg-glass-overlay {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Mask for complex selections */
+.orkg-selection-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9997;
+    pointer-events: none;
+}
+
+.orkg-selection-mask svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive overlays */
+@media (max-width: 768px) {
+    .orkg-extraction-progress {
+        min-width: 250px;
+        padding: 15px 20px;
+    }
+    
+    .orkg-error-overlay,
+    .orkg-success-overlay {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
+}
+

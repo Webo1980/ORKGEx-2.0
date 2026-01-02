@@ -1,0 +1,350 @@
+/* ================================
+   Add this to your existing styles/components/toast.css file
+   Toast CSS Fix - Ensure proper visibility and animations
+   ================================ */
+
+/* FIXED: Ensure toast container is properly positioned and visible */
+.toast-container {
+    position: fixed;
+    top: 80px;
+    right: var(--spacing-lg);
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    pointer-events: none;
+    max-width: 420px;
+    width: auto;
+    font-family: var(--font-family-base);
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* FIXED: Toast entrance and exit animations */
+.toast {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border-left: 4px solid var(--info-color);
+    min-width: 320px;
+    max-width: 420px;
+    /* FIXED: Initial state for animation */
+    opacity: 0;
+    transform: translateX(100%);
+    /* FIXED: Smooth animation curve */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    /* FIXED: Ensure toast is visible in DOM */
+    visibility: visible;
+}
+
+/* FIXED: Show state with proper animation */
+.toast.show {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+}
+
+/* FIXED: Hide state for exit animation */
+.toast.hide {
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+    pointer-events: none;
+}
+
+/* FIXED: Action toast specific styling */
+.toast.action-toast {
+    min-width: 350px;
+    padding: var(--spacing-lg);
+}
+
+/* FIXED: Loading toast with spinner */
+.toast.loading .toast-icon i {
+    animation: spin 1s linear infinite;
+}
+
+/* FIXED: Progress toast styling */
+.toast.progress {
+    min-width: 320px;
+    padding: var(--spacing-md);
+}
+
+/* FIXED: Ensure proper stacking order */
+.toast:nth-child(1) { z-index: 1005; }
+.toast:nth-child(2) { z-index: 1004; }
+.toast:nth-child(3) { z-index: 1003; }
+.toast:nth-child(4) { z-index: 1002; }
+.toast:nth-child(5) { z-index: 1001; }
+
+/* FIXED: Toast type specific colors and borders */
+.toast.success {
+    border-left-color: var(--success-color);
+    background: var(--bg-primary);
+}
+
+.toast.error {
+    border-left-color: var(--error-color);
+    background: var(--bg-primary);
+}
+
+.toast.warning {
+    border-left-color: var(--warning-color);
+    background: var(--bg-primary);
+}
+
+.toast.info {
+    border-left-color: var(--info-color);
+    background: var(--bg-primary);
+}
+
+.toast-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-icon i {
+    font-size: 16px;
+}
+
+.toast-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.toast-cancel-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 6px 12px;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.toast-cancel-btn:hover {
+    background: var(--bg-hover);
+}
+
+.toast-confirm-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 6px 12px;
+    font-size: 12px;
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.toast-confirm-btn:hover {
+    opacity: 0.9;
+}
+
+/* Type-specific confirm button colors */
+.confirmation-toast.success .toast-confirm-btn {
+    border-color: var(--success-color);
+    background: var(--success-color);
+}
+
+.confirmation-toast.error .toast-confirm-btn {
+    border-color: var(--error-color);
+    background: var(--error-color);
+}
+
+.confirmation-toast.warning .toast-confirm-btn {
+    border-color: var(--warning-color);
+    background: var(--warning-color);
+}
+
+.confirmation-toast.info .toast-confirm-btn {
+    border-color: var(--info-color);
+    background: var(--info-color);
+}
+
+/* FIXED: Icon colors for better visibility */
+.toast.success .toast-icon i {
+    color: var(--success-color);
+}
+
+.toast.error .toast-icon i {
+    color: var(--error-color);
+}
+
+.toast.warning .toast-icon i {
+    color: var(--warning-color);
+}
+
+.toast.info .toast-icon i {
+    color: var(--info-color);
+}
+
+/* FIXED: Toast content layout */
+.toast-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.toast-message {
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    word-wrap: break-word;
+}
+
+/* FIXED: Close button styling */
+.toast-close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+}
+
+.toast-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+    transform: scale(1.1);
+}
+
+.toast-close:active {
+    transform: scale(0.95);
+}
+
+.confirmation-toast {
+    min-width: 350px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+/* FIXED: Dark theme support */
+[data-theme="dark"] .toast {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-xl);
+}
+
+[data-theme="dark"] .toast-message {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .toast-close {
+    color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .toast-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+}
+
+/* FIXED: Mobile responsiveness */
+@media (max-width: 480px) {
+    .toast-container {
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+        max-width: none;
+        top: 60px;
+    }
+    
+    .toast {
+        min-width: auto;
+        max-width: none;
+        margin: 0;
+    }
+    
+    .toast.action-toast {
+        min-width: auto;
+    }
+
+    .confirmation-toast {
+        min-width: auto;
+        width: calc(100% - 32px);
+        max-width: none;
+    }
+}
+
+/* FIXED: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .toast {
+        transition: opacity 0.2s ease;
+        transform: none !important;
+    }
+    
+    .toast.show {
+        transform: none !important;
+    }
+    
+    .toast.hide {
+        transform: none !important;
+    }
+}
+
+/* FIXED: High contrast mode */
+@media (prefers-contrast: high) {
+    .toast {
+        border: 2px solid currentColor;
+        box-shadow: none;
+    }
+    
+    .toast-close {
+        border: 1px solid var(--border-color);
+    }
+}
+
+/* FIXED: Force visibility override for debugging */
+.toast-container.force-visible {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+}
+
+.toast.force-visible {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+    transform: translateX(0) !important;
+}

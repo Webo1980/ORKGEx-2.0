@@ -1,0 +1,353 @@
+/* ================================
+/* src/styles/components/triple-editor.css
+/* ================================ */
+
+/* Modal Overlay */
+.triple-editor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Editor Container */
+.triple-editor-container {
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Editor Header */
+.triple-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.triple-editor-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 18px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+/* Editor Body */
+.triple-editor-body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Image Section */
+.image-section {
+    width: 40%;
+    padding: 24px;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.editor-image-preview {
+    width: 100%;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.editor-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.editor-image-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info-item {
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+.info-item strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-item p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Triples Section */
+.triples-section {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.triples-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.triples-header h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+/* Triples List */
+.triples-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Triple Item */
+.triple-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.triple-item:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.triple-item.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+}
+
+.triple-item.drag-over-top {
+    border-top: 2px solid var(--primary);
+}
+
+.triple-item.drag-over-bottom {
+    border-bottom: 2px solid var(--primary);
+}
+
+/* Drag Handle */
+.triple-drag-handle {
+    cursor: move;
+    color: var(--text-tertiary);
+    padding: 4px;
+}
+
+.triple-drag-handle:hover {
+    color: var(--text-secondary);
+}
+
+/* Triple Content */
+.triple-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.triple-field {
+    flex: 1;
+}
+
+.triple-field label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+}
+
+.editable-field {
+    padding: 8px 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    min-height: 36px;
+    transition: all 0.2s;
+    cursor: text;
+}
+
+.editable-field:hover {
+    border-color: var(--primary-light);
+}
+
+.editable-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light-20);
+}
+
+.predicate-circle {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Triple Arrow */
+.triple-arrow {
+    color: var(--text-tertiary);
+    font-size: 16px;
+}
+
+/* Triple Actions */
+.triple-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.confidence-badge {
+    padding: 4px 8px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.delete-triple-btn {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.delete-triple-btn:hover {
+    color: var(--danger);
+}
+
+/* No Triples State */
+.no-triples {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+.no-triples i {
+    font-size: 32px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+}
+
+.no-triples p {
+    margin: 0;
+}
+
+/* Editor Footer */
+.triple-editor-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .triple-editor-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .triple-editor-body {
+        flex-direction: column;
+    }
+    
+    .image-section {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 40vh;
+    }
+    
+    .triple-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .triple-arrow {
+        transform: rotate(90deg);
+        margin: 8px 0;
+    }
+}

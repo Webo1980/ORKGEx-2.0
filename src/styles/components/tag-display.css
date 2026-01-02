@@ -1,0 +1,246 @@
+/* ================================
+   Tag Display Component Styles
+   src/styles/components/tag-display.css
+   ================================ */
+
+.tag-display-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tag-display-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Tag Item Styles */
+.tag-display-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--tag-bg, var(--bg-tertiary));
+    border: 1px solid var(--tag-border, var(--border-color));
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--tag-color, var(--text-secondary));
+    position: relative;
+    cursor: default;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tag-display-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: var(--tag-hover-bg, var(--bg-hover));
+    max-width: none;
+    z-index: 10;
+}
+
+.tag-display-item.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.tag-display-item.expanding {
+    animation: tagExpand 0.3s ease forwards;
+}
+
+.tag-display-item.collapsing {
+    animation: tagCollapse 0.3s ease forwards;
+}
+
+.tag-display-item.removing {
+    animation: tagRemove 0.3s ease forwards;
+}
+
+.tag-display-item.animate-in {
+    animation: tagFadeIn 0.3s ease forwards;
+}
+
+/* Tag Label and Value */
+.tag-display-label {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.tag-display-value {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-left: 4px;
+}
+
+.tag-display-icon {
+    font-size: 12px;
+}
+
+/* Expand/Collapse Button */
+.tag-display-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--primary-bg-light);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tag-display-expand-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.tag-display-expand-btn .expand-text {
+    display: inline;
+}
+
+.tag-display-expand-btn .collapse-text {
+    display: none;
+}
+
+.tag-display-expand-btn .expand-icon {
+    transition: transform 0.3s ease;
+    font-size: 10px;
+}
+
+.tag-display-expand-btn.expanded .expand-text {
+    display: none;
+}
+
+.tag-display-expand-btn.expanded .collapse-text {
+    display: inline;
+}
+
+.tag-display-expand-btn.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+/* Wrapper States */
+.tag-display-wrapper.expanded {
+    padding-bottom: 8px;
+}
+
+.tag-display-wrapper.clearing .tag-display-item {
+    animation: tagRemove 0.3s ease forwards;
+}
+
+/* Animations */
+@keyframes tagFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes tagExpand {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+        margin-left: -20px;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        margin-left: 0;
+    }
+}
+
+@keyframes tagCollapse {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes tagRemove {
+    to {
+        opacity: 0;
+        transform: scale(0) rotate(180deg);
+        margin: 0;
+        padding: 0;
+        width: 0;
+    }
+}
+
+/* Color Variants */
+.tag-display-item.tag-strict {
+    --tag-bg: #fee2e2;
+    --tag-border: #fca5a5;
+    --tag-color: #991b1b;
+}
+
+.tag-display-item.tag-loose {
+    --tag-bg: #dbeafe;
+    --tag-border: #93c5fd;
+    --tag-color: #1e40af;
+}
+
+.tag-display-item.tag-reasonable {
+    --tag-bg: #d1fae5;
+    --tag-border: #6ee7b7;
+    --tag-color: #065f46;
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .tag-display-item {
+    --tag-bg: rgba(255, 255, 255, 0.05);
+    --tag-border: rgba(255, 255, 255, 0.1);
+    --tag-hover-bg: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .tag-display-item.tag-strict {
+    --tag-bg: rgba(239, 68, 68, 0.1);
+    --tag-border: rgba(239, 68, 68, 0.3);
+    --tag-color: #fca5a5;
+}
+
+[data-theme="dark"] .tag-display-item.tag-loose {
+    --tag-bg: rgba(59, 130, 246, 0.1);
+    --tag-border: rgba(59, 130, 246, 0.3);
+    --tag-color: #93c5fd;
+}
+
+[data-theme="dark"] .tag-display-item.tag-reasonable {
+    --tag-bg: rgba(16, 185, 129, 0.1);
+    --tag-border: rgba(16, 185, 129, 0.3);
+    --tag-color: #6ee7b7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tag-display-item {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+    
+    .tag-display-expand-btn {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}

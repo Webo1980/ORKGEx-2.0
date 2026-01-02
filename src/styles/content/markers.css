@@ -1,0 +1,916 @@
+/* src/styles/content/markers.css - Complete Integrated Marker Styles */
+
+/* ================================
+   CSS Variables
+   ================================ */
+:root {
+    /* Color variables */
+    --orkg-marker-red: #e86161;
+    --orkg-marker-red-light: #FF6B6B;
+    --orkg-marker-red-dark: #E04848;
+    --orkg-marker-blue: #2196F3;
+    --orkg-marker-green: #4CAF50;
+    --orkg-marker-purple: #9C27B0;
+    --orkg-marker-orange: #FF9800;
+    --orkg-marker-white: #FFFFFF;
+    --orkg-marker-dark: #212121;
+    --orkg-marker-gray: #666666;
+    --orkg-marker-shadow: rgba(255, 82, 82, 0.3);
+    
+    /* Sizing */
+    --orkg-marker-size: 44px;
+    --orkg-marker-size-small: 32px;
+    --orkg-marker-offset: 10px;
+    
+    /* Transitions and animations */
+    --orkg-marker-transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --orkg-animation-duration: 300ms;
+    --orkg-animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-index layers */
+    --orkg-z-marker: 10000;
+    --orkg-z-menu: 10001;
+    --orkg-z-tooltip: 10002;
+    --orkg-z-modal: 100000;
+}
+
+/* ================================
+   Base Marker Styles
+   ================================ */
+.orkg-marker {
+    position: absolute !important;
+    width: var(--orkg-marker-size) !important;
+    height: var(--orkg-marker-size) !important;
+    border-radius: 50% !important;
+    background: var(--orkg-marker-red) !important;
+    border: 2px solid rgba(255, 255, 255, 0.95) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 3px 10px var(--orkg-marker-shadow), 
+                0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    cursor: pointer !important;
+    transition: var(--orkg-marker-transition) !important;
+    z-index: var(--orkg-z-marker) !important;
+    user-select: none !important;
+    top: var(--orkg-marker-offset) !important;
+    right: var(--orkg-marker-offset) !important;
+}
+
+/* Marker hover state */
+.orkg-marker:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 14px var(--orkg-marker-shadow), 
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Marker active/clicked state */
+.orkg-marker:active {
+    transform: scale(0.95) !important;
+}
+
+/* ================================
+   Marker Content
+   ================================ */
+.orkg-marker-content {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.orkg-marker-icon-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.orkg-marker-icon {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+.orkg-marker-icon-placeholder {
+    color: white !important;
+    font-size: 9px !important;
+    font-weight: bold !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    text-transform: uppercase !important;
+}
+
+/* Type Indicator */
+.orkg-marker-type-indicator {
+    position: absolute !important;
+    top: -6px !important;
+    right: -6px !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: white !important;
+    border: 2px solid var(--orkg-marker-red) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.orkg-marker-type-indicator svg {
+    width: 10px !important;
+    height: 10px !important;
+    fill: var(--orkg-marker-gray) !important;
+}
+
+/* ================================
+   Type-specific Marker Styles
+   ================================ */
+.orkg-text-marker {
+    background: var(--orkg-marker-blue) !important;
+    box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3), 
+                0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.orkg-text-marker:hover {
+    box-shadow: 0 4px 14px rgba(33, 150, 243, 0.4), 
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.orkg-text-marker .orkg-marker-type-indicator {
+    border-color: var(--orkg-marker-blue) !important;
+}
+
+.orkg-image-marker {
+    background: var(--orkg-marker-green) !important;
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3), 
+                0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.orkg-image-marker:hover {
+    box-shadow: 0 4px 14px rgba(76, 175, 80, 0.4), 
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.orkg-image-marker .orkg-marker-type-indicator {
+    border-color: var(--orkg-marker-green) !important;
+}
+
+.orkg-table-marker {
+    background: var(--orkg-marker-purple) !important;
+    box-shadow: 0 3px 10px rgba(156, 39, 176, 0.3), 
+                0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.orkg-table-marker:hover {
+    box-shadow: 0 4px 14px rgba(156, 39, 176, 0.4), 
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.orkg-table-marker .orkg-marker-type-indicator {
+    border-color: var(--orkg-marker-purple) !important;
+}
+
+/* ================================
+   Marker Positioning
+   ================================ */
+
+/* Container for images and tables */
+.orkg-marker-container {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.orkg-marker-container .orkg-marker-positioned {
+    position: absolute !important;
+    top: var(--orkg-marker-offset) !important;
+    right: var(--orkg-marker-offset) !important;
+}
+
+/* Text marker specific positioning */
+.orkg-text-marker-container {
+    position: relative !important;
+    display: inline !important;
+}
+
+.orkg-text-marker-wrapper {
+    position: relative !important;
+    display: inline !important;
+}
+
+/* Floating text marker - positioned to not cover content */
+.orkg-text-marker-wrapper .orkg-marker,
+.orkg-marker-floating {
+    position: absolute !important;
+    width: var(--orkg-marker-size-small) !important;
+    height: var(--orkg-marker-size-small) !important;
+    top: -26px !important;
+    right: -10px !important;
+    z-index: var(--orkg-z-marker) !important;
+}
+
+/* Highlighted text */
+.orkg-highlighted,
+.orkg-rag-highlight {
+    background-color: #FFE4B5;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    display: inline !important;
+    position: relative !important;
+}
+
+/* ================================
+   Menu Styles
+   ================================ */
+.orkg-marker-menu {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    right: 0 !important;
+    background: white !important;
+    border: 1px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    padding: 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    z-index: var(--orkg-z-menu) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    transition: all 200ms ease !important;
+    min-width: 40px !important;
+}
+
+.orkg-marker-menu.orkg-menu-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Menu Items */
+.orkg-menu-item {
+    background: white !important;
+    border: 1px solid #d0d0d0 !important;
+    border-radius: 6px !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 200ms ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: none !important;
+    position: relative !important;
+}
+
+.orkg-menu-item:hover {
+    background: #f0f0f0 !important;
+    border-color: var(--orkg-marker-red) !important;
+    transform: scale(1.05) !important;
+}
+
+/* SVG Icon Styles */
+.orkg-menu-item svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: #333333 !important;
+    stroke: #333333 !important;
+    color: #333333 !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+.orkg-menu-item svg *,
+.orkg-menu-item svg path,
+.orkg-menu-item svg circle,
+.orkg-menu-item svg rect,
+.orkg-menu-item svg polygon {
+    fill: #333333 !important;
+    stroke: #333333 !important;
+}
+
+.orkg-menu-item:hover svg,
+.orkg-menu-item:hover svg * {
+    fill: var(--orkg-marker-red) !important;
+    stroke: var(--orkg-marker-red) !important;
+}
+
+/* Specific menu item colors */
+.orkg-menu-delete:hover {
+    background: #ffebee !important;
+    border-color: #f44336 !important;
+}
+
+.orkg-menu-delete:hover svg,
+.orkg-menu-delete:hover svg * {
+    fill: #f44336 !important;
+    stroke: #f44336 !important;
+}
+
+.orkg-menu-update:hover {
+    background: #e3f2fd !important;
+    border-color: #2196F3 !important;
+}
+
+.orkg-menu-update:hover svg,
+.orkg-menu-update:hover svg * {
+    fill: #2196F3 !important;
+    stroke: #2196F3 !important;
+}
+
+.orkg-menu-info:hover {
+    background: #e8f5e9 !important;
+    border-color: #4CAF50 !important;
+}
+
+.orkg-menu-info:hover svg,
+.orkg-menu-info:hover svg * {
+    fill: #4CAF50 !important;
+    stroke: #4CAF50 !important;
+}
+
+.orkg-menu-send:hover {
+    background: #ffe4e4 !important;
+    border-color: var(--orkg-marker-red) !important;
+}
+
+.orkg-menu-send:hover svg,
+.orkg-menu-send:hover svg * {
+    fill: var(--orkg-marker-red) !important;
+    stroke: var(--orkg-marker-red) !important;
+}
+
+/* Fallback if icons are missing */
+.orkg-menu-item:empty::after {
+    content: "•" !important;
+    color: #333333 !important;
+    font-size: 18px !important;
+}
+
+/* ================================
+   Tooltip Styles
+   ================================ */
+.orkg-marker-tooltip {
+    position: absolute !important;
+    bottom: calc(100% + 12px) !important;
+    right: -20px !important;
+    min-width: 200px !important;
+    max-width: 250px !important;
+    background: rgba(33, 33, 33, 0.95) !important;
+    color: white !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 200ms ease, visibility 200ms ease !important;
+    z-index: var(--orkg-z-tooltip) !important;
+}
+
+.orkg-marker:hover .orkg-marker-tooltip {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.orkg-tooltip-arrow {
+    position: absolute !important;
+    top: 100% !important;
+    right: 24px !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: 6px solid transparent !important;
+    border-top-color: rgba(33, 33, 33, 0.95) !important;
+}
+
+.orkg-tooltip-type-badge {
+    background: var(--orkg-marker-red) !important;
+    color: white !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    margin-bottom: 4px !important;
+}
+
+.orkg-tooltip-text-preview,
+.orkg-tooltip-image-info,
+.orkg-tooltip-table-info {
+    margin-top: 4px !important;
+    font-style: italic !important;
+    opacity: 0.9 !important;
+}
+
+.orkg-tooltip-property {
+    margin-top: 4px !important;
+    padding-top: 4px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.orkg-tooltip-confidence {
+    margin-top: 4px !important;
+    font-size: 11px !important;
+    opacity: 0.8 !important;
+}
+
+/* ================================
+   Modal Styles
+   ================================ */
+.orkg-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: var(--orkg-z-modal) !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.orkg-modal-overlay.orkg-modal-visible {
+    opacity: 1 !important;
+}
+
+.orkg-modal-content {
+    background: white !important;
+    border-radius: 12px !important;
+    max-width: 500px !important;
+    width: 90% !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    transform: scale(0.9) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.orkg-modal-visible .orkg-modal-content {
+    transform: scale(1) !important;
+}
+
+.orkg-modal-large {
+    max-width: 700px !important;
+}
+
+.orkg-modal-scrollable {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+.orkg-modal-header {
+    padding: 20px 24px 16px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.orkg-modal-header h3 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    color: #333 !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.orkg-modal-subtitle {
+    font-size: 14px !important;
+    color: #666 !important;
+    display: block !important;
+    margin-top: 4px !important;
+}
+
+.orkg-modal-body {
+    padding: 20px 24px !important;
+}
+
+.orkg-modal-footer {
+    padding: 16px 24px 20px !important;
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: flex-end !important;
+    border-top: 1px solid #e0e0e0 !important;
+}
+
+/* Modal Buttons */
+.orkg-modal-btn {
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    border: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-weight: 500 !important;
+    outline: none !important;
+}
+
+.orkg-btn-primary {
+    background: var(--orkg-marker-blue) !important;
+    color: white !important;
+}
+
+.orkg-btn-primary:hover {
+    background: #1976D2 !important;
+}
+
+.orkg-btn-danger {
+    background: #f44336 !important;
+    color: white !important;
+}
+
+.orkg-btn-danger:hover {
+    background: #d32f2f !important;
+}
+
+.orkg-btn-secondary {
+    background: white !important;
+    color: #6c757d !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+.orkg-btn-secondary:hover {
+    background: #f8f9fa !important;
+}
+
+.orkg-btn-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+.orkg-btn-gradient:hover {
+    background: linear-gradient(135deg, #5a6fd1 0%, #6b4190 100%) !important;
+}
+
+.orkg-btn-disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+/* Modal Content Styles */
+.orkg-modal-preview {
+    padding: 12px !important;
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    margin: 16px 0 !important;
+}
+
+.orkg-modal-preview-text {
+    font-size: 14px !important;
+    color: #666 !important;
+    font-style: italic !important;
+}
+
+/* Info Modal Styles */
+.orkg-info-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.orkg-info-row {
+    display: flex !important;
+    gap: 12px !important;
+}
+
+.orkg-info-label {
+    font-weight: 600 !important;
+    color: #666 !important;
+    min-width: 100px !important;
+}
+
+.orkg-info-value {
+    flex: 1 !important;
+    color: #333 !important;
+    word-break: break-word !important;
+}
+
+.orkg-info-url {
+    font-family: monospace !important;
+    font-size: 12px !important;
+}
+
+/* Send Modal Styles */
+.orkg-send-counts {
+    display: flex !important;
+    gap: 16px !important;
+    padding: 12px !important;
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    margin-top: 16px !important;
+}
+
+.orkg-count-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 14px !important;
+    color: #666 !important;
+}
+
+.orkg-count-icon {
+    font-size: 16px !important;
+}
+
+/* Category Sections */
+.orkg-categories-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+.orkg-category-section {
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+}
+
+.orkg-category-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+    padding: 12px !important;
+    background: #f8f9fa !important;
+    border-radius: 8px 8px 0 0 !important;
+    margin: -16px -16px 12px -16px !important;
+}
+
+.orkg-category-items {
+    padding: 0 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+}
+
+.orkg-category-icon {
+    font-size: 16px !important;
+}
+
+.orkg-category-title {
+    font-weight: 600 !important;
+    color: #333 !important;
+}
+
+.orkg-category-count {
+    color: #6c757d !important;
+    font-size: 14px !important;
+}
+
+/* Checkbox Styles */
+.orkg-checkbox-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+.orkg-checkbox,
+.orkg-category-checkbox {
+    width: 16px !important;
+    height: 16px !important;
+    cursor: pointer !important;
+}
+
+.orkg-item-checkbox {
+    width: 14px !important;
+    height: 14px !important;
+    margin-top: 2px !important;
+    cursor: pointer !important;
+}
+
+.orkg-item-label {
+    padding-left: 24px !important;
+}
+
+.orkg-item-text {
+    font-size: 13px !important;
+    color: #666 !important;
+}
+
+.orkg-select-all-section {
+    padding: 12px !important;
+    background: #e9ecef !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+}
+
+/* ================================
+   Marker States
+   ================================ */
+.orkg-marker-hidden {
+    display: none !important;
+}
+
+.orkg-marker-extracted,
+.orkg-extracted {
+    background: var(--orkg-marker-gray) !important;
+    opacity: 0.7 !important;
+}
+
+.orkg-marker-extracting,
+.orkg-extracting {
+    animation: orkg-pulse 1.5s ease-in-out infinite !important;
+}
+
+/* ================================
+   Animations
+   ================================ */
+@keyframes orkg-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes orkg-scale-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes orkg-scale-out {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes orkgMarkerEntrance {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.orkg-marker-entrance {
+    animation: orkgMarkerEntrance 600ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.orkg-marker-exit {
+    animation: orkg-scale-out 300ms ease-out !important;
+}
+
+/* Send wave animation */
+.orkg-send-wave {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100px !important;
+    width: 100px !important;
+    height: 100vh !important;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(33, 150, 243, 0.3),
+        rgba(102, 126, 234, 0.3),
+        transparent) !important;
+    transform: skewX(-25deg) !important;
+    animation: orkg-wave-sweep 1.5s ease-out !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
+}
+
+@keyframes orkg-wave-sweep {
+    from {
+        left: -100px;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* ================================
+   Feedback Toast
+   ================================ */
+.orkg-feedback {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    background: #333 !important;
+    color: white !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 14px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+    transition: all 300ms ease !important;
+    z-index: var(--orkg-z-modal) !important;
+}
+
+.orkg-feedback-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.orkg-feedback-success {
+    background: #4CAF50 !important;
+}
+
+.orkg-feedback-error {
+    background: #f44336 !important;
+}
+
+.orkg-feedback-warning {
+    background: #FF9800 !important;
+}
+
+.orkg-feedback-info {
+    background: #2196F3 !important;
+}
+
+/* ================================
+   Confidence Badge
+   ================================ */
+/*.orkg-confidence-badge {
+    position: absolute !important;
+    bottom: -4px !important;
+    right: -4px !important;
+    background: #f59e0b !important;
+    color: white !important;
+    font-size: 9px !important;
+    font-weight: bold !important;
+    padding: 2px 4px !important;
+    border-radius: 10px !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    z-index: calc(var(--orkg-z-marker) + 1) !important;
+}*/
+
+/* ================================
+   Importance Levels
+   ================================ */
+.orkg-importance-high {
+    border-width: 3px !important;
+    box-shadow: 0 4px 16px var(--orkg-marker-shadow), 
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.orkg-importance-low {
+    opacity: 0.8 !important;
+    border-width: 1px !important;
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 768px) {
+    :root {
+        --orkg-marker-size: 36px;
+        --orkg-marker-size-small: 28px;
+    }
+    
+    .orkg-marker-menu {
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(-10px) !important;
+    }
+    
+    .orkg-marker-menu.orkg-menu-visible {
+        transform: translateX(-50%) translateY(0) !important;
+    }
+    
+    .orkg-modal-content {
+        width: 95% !important;
+        margin: 10px !important;
+    }
+    
+    .orkg-feedback {
+        bottom: 10px !important;
+        right: 10px !important;
+        left: 10px !important;
+        width: auto !important;
+    }
+}

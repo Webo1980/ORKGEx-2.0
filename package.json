@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "build:config": "node scripts/build-config.js",
+    "build:content": "node scripts/build-content-script.js",
+    "build:background": "node scripts/build-background.js",
+    "build:css": "node scripts/build-content-script.js",
+    "build:all": "npm run build:config && npm run build:content && npm run build:background",
+    "watch": "nodemon --watch src --ext js,css --exec npm run build:all",
+    "dev": "npm run build:all"
+  },
+  "devDependencies": {
+    "dotenv": "^16.6.1",
+    "nodemon": "^3.1.11"
+  }
+}
